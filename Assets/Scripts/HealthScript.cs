@@ -11,11 +11,13 @@ public class HealthScript : MonoBehaviour
     public int currentHealth;
     public Animator anim;
 
+    private PlayerManager playerManager;
     private bool damaged;
     private bool isDead = false;
 
     private void Start()
     {
+        playerManager = GetComponent<PlayerManager>();
         currentHealth = startingHealth;
     }
 
@@ -30,8 +32,11 @@ public class HealthScript : MonoBehaviour
         if (currentHealth <=0 && !isDead)
         {
             isDead = true;
+            playerManager.PlayerDied();
             death();
         }
+        if (isDead && !PlayerManager.SharedInstance.IsDead)
+            playerManager.PlayerDied();
     }
 
     public void RecieveDamage(int damage)
@@ -42,12 +47,14 @@ public class HealthScript : MonoBehaviour
         if (currentHealth <= 0)
         {
             isDead = true;
+            playerManager.PlayerDied();
             death();
         }    
     }
 
     private void death()
     {
+        ObjectSpawner.Deactivate();
         GameObject sound = ObjectPooler.SharedInstance.GetPooledObject("PlayerDeathScream");
         if (sound != null)
         {
@@ -55,8 +62,8 @@ public class HealthScript : MonoBehaviour
             sound.transform.rotation = transform.rotation;
             sound.SetActive(true);
         }
-        ObjectSpawner.Deactivate();
         anim.SetBool("isDead", true);
+        MusicManager.SharedInstance.ChangeSong("DeathSong", 1f);
         EnableButtonsOnDeath.EnableButtons();
     }
 

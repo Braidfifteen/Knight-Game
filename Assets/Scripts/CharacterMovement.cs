@@ -16,30 +16,34 @@ public class CharacterMovement : MonoBehaviour {
 
     void Update()
     {
-        if (!GameManager.IsMobile)
+        if (!PlayerManager.SharedInstance.IsDead)
         {
-            move = Input.GetAxis("Horizontal");
-        }
+            if (!GameManager.IsMobile)
+            {
+                move = Input.GetAxis("Horizontal");
+            }
 
-        if (move < 0 && facingRight)
-        {
-            facingRight = !facingRight;
-            transform.rotation = Quaternion.Euler(0f, -180f, 0f);
+            if (move < 0 && facingRight)
+            {
+                facingRight = !facingRight;
+                transform.rotation = Quaternion.Euler(0f, -180f, 0f);
+            }
+            if (move > 0 && !facingRight)
+            {
+                facingRight = !facingRight;
+                transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            }
+            if (move != 0)
+                anim.SetBool("isRunning", true);
+            else
+                anim.SetBool("isRunning", false);
         }
-        if (move > 0 && !facingRight)
-        {
-            facingRight = !facingRight;
-            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-        }
-        if (move != 0)
-            anim.SetBool("isRunning", true);
-        else
-            anim.SetBool("isRunning", false);
     }
 
     void FixedUpdate()
     {
-        rb.velocity = new Vector2(move * maxSpeed, rb.velocity.y);//AddForce(new Vector2(move * maxSpeed, rb.velocity.y));
+        if (!PlayerManager.SharedInstance.IsDead)
+            rb.velocity = new Vector2(move * maxSpeed, rb.velocity.y);//AddForce(new Vector2(move * maxSpeed, rb.velocity.y));
     }
 
     public void MobileMoveLeft()

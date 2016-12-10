@@ -22,14 +22,20 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    public static void AddToScore(int points)
+    public static void AddToScore(int amount)
     {
-        ScoreManager.score += points;
+        ScoreManager.score += amount;
+        ScoreManager.scoreUpdated = true;
+    }
+
+    public static void DecreaseScore(int amount)
+    {
+        ScoreManager.score -= amount;
         ScoreManager.scoreUpdated = true;
     }
 
     private void setScore()
     {
-        scoreText.text = "Score: " + score.ToString();
+        scoreText.text = "Score : " + score.ToString();
     }
 }

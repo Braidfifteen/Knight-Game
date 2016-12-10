@@ -6,16 +6,19 @@ public class ObjectSpawner : MonoBehaviour
 
     public float spawnTime;
     public float spawnTimer = 0.0f;
+    public float startTime;
+    public float prevTime;
     public string[] objectsToSpawnTags;
 
     void Start()
     {
         ObjectSpawner.isActive = true;
+        startTime = Time.time;
     }
 
     private void Update()
     {
-        if (ObjectSpawner.isActive)
+        if (ObjectSpawner.isActive && !PlayerManager.SharedInstance.IsDead)
         {
             spawnTime = Random.Range(0.0f, 22.0f);
             spawnTimer += Time.deltaTime;
