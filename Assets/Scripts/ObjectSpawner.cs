@@ -3,8 +3,10 @@
 public class ObjectSpawner : MonoBehaviour
 {
     private static bool isActive;
+
     public float spawnTime;
     public float spawnTimer = 0.0f;
+    public string[] objectsToSpawnTags;
 
     void Start()
     {
@@ -21,7 +23,7 @@ public class ObjectSpawner : MonoBehaviour
             {
                 Vector2 spawnPos = transform.position;
                 spawnPos.x += Random.Range(1.0f, 16f);
-                GameObject newObject = ObjectPooler.SharedInstance.GetPooledObject("GoodItem");
+                GameObject newObject = ObjectPooler.SharedInstance.GetPooledObject(objectsToSpawnTags[1]);
                 if (newObject != null)
                 {
                     newObject.transform.position = spawnPos;
