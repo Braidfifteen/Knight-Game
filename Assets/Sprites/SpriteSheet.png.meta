@@ -1,0 +1,208 @@
+fileFormatVersion: 2
+guid: 14422da942d361f4eb96a09f6ff9e508
+timeCreated: 1481150770
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: idle_0
+    21300002: Running_Eight
+    21300004: Running_Five
+    21300006: Running_Four
+    21300008: Running_Nine
+    21300010: Running_One
+    21300012: Running_Seven
+    21300014: Running_Six
+    21300016: Running_Three
+    21300018: Running_Two
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: idle_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1512
+        width: 275
+        height: 535
+      alignment: 9
+      pivot: {x: 0.47636363, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Running_Eight
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 1523
+        width: 422
+        height: 524
+      alignment: 9
+      pivot: {x: 0.507109, y: 0.5057252}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Running_Five
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 453
+        width: 280
+        height: 524
+      alignment: 9
+      pivot: {x: 0.26785713, y: 0.5057252}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Running_Four
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 1543
+        width: 384
+        height: 504
+      alignment: 9
+      pivot: {x: 0.4609375, y: 0.50595236}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Running_Nine
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 998
+        width: 394
+        height: 523
+      alignment: 9
+      pivot: {x: 0.48984772, y: 0.5047801}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Running_One
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 979
+        width: 278
+        height: 531
+      alignment: 9
+      pivot: {x: 0.4586331, y: 0.50282484}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Running_Seven
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 1545
+        width: 414
+        height: 502
+      alignment: 9
+      pivot: {x: 0.49275362, y: 0.48406374}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Running_Six
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 473
+        width: 343
+        height: 523
+      alignment: 9
+      pivot: {x: 0.393586, y: 0.5047801}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Running_Three
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 1017
+        width: 422
+        height: 504
+      alignment: 9
+      pivot: {x: 0.50236964, y: 0.50595236}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: Running_Two
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 478
+        width: 375
+        height: 518
+      alignment: 9
+      pivot: {x: 0.504, y: 0.49903476}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: -1
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
