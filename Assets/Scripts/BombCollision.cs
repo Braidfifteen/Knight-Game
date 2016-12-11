@@ -2,10 +2,13 @@
 
 public class BombCollision : MonoBehaviour
 {
-    public int damageToPlayer = 20;
-    public int damageToScore;
+    private int damageToPlayer = 20;
+    private int damageToScore = 1;
     private HealthScript playerHealth;
     private float bombTransformOffset = 0.10f;
+
+    public int DamageToPlayer { get { return damageToPlayer; } set { damageToPlayer = value; } }
+    public int DamageToScore { get { return damageToScore; } set { damageToScore = value; } }
 
     void OnEnable()
     {
@@ -21,7 +24,7 @@ public class BombCollision : MonoBehaviour
         if (other.tag == "Bag")
         {
             ScoreManager.DecreaseScore(damageToScore);
-            //gib on collide with gooditems
+            print("Gib on collide with gooditems - bombcollision");
         }
 
         GameObject explosion = ObjectPooler.SharedInstance.GetPooledObject("Explosion");
@@ -32,16 +35,5 @@ public class BombCollision : MonoBehaviour
             explosion.SetActive(true);
         }
         gameObject.SetActive(false);
-    }
-
-    public void SetDamage(int damageToPlayer, int damageToScore)
-    {
-        this.damageToPlayer = damageToPlayer;
-        this.damageToScore = damageToScore;
-    }
-
-    public void SetDamage(int damageToScore)
-    {
-        this.damageToScore = damageToScore;
     }
 }
