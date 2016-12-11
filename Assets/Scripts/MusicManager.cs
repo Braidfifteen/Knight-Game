@@ -19,6 +19,7 @@ public class MusicManager : MonoBehaviour
     void Start()
     {
         thisAudio.clip = musicList[0];
+        thisAudio.volume = 0.20f;
     }
 
     void Update()
@@ -47,9 +48,26 @@ public class MusicManager : MonoBehaviour
             {
                 if (thisAudio.isPlaying)
                 {
-                    thisAudio.Pause();
+                    thisAudio.Stop();
                 }
                 thisAudio.clip = musicList[i];
+                thisAudio.PlayDelayed(delay);
+            }
+        }
+    }
+
+    public void ChangeSong(string songTitle, float delay, float volume)
+    {
+        for (int i = 0; i < musicList.Count; i++)
+        {
+            if (musicList[i].name == songTitle)
+            {
+                if (thisAudio.isPlaying)
+                {
+                    thisAudio.Stop();
+                }
+                thisAudio.clip = musicList[i];
+                thisAudio.volume = volume;
                 thisAudio.PlayDelayed(delay);
             }
         }

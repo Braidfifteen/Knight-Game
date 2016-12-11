@@ -63,7 +63,7 @@ public class HealthScript : MonoBehaviour
             sound.SetActive(true);
         }
         anim.SetBool("isDead", true);
-        MusicManager.SharedInstance.ChangeSong("DeathSong", 1f);
+        MusicManager.SharedInstance.ChangeSong("DeathSong", 1f, 1f);
         EnableButtonsOnDeath.EnableButtons();
     }
 

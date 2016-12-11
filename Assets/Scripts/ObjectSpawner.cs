@@ -17,52 +17,13 @@ public class ObjectSpawner : MonoBehaviour
     private Vector2 spawnPos;
     private Vector2 defaultPos;
 
+    private bool megaBombDrop = false;
+    private int megaBombDropCount = 0;
+
     public float spawnTime;
     public float spawnTimer = 0.0f;
     public float timePlaying;
     public string[] objectsToSpawnTags;
-
-    void Start()
-    {
-        ObjectSpawner.isActive = true;
-        defaultPos = transform.position;
-    }
-
-    private void Update()
-    {
-        timePlaying = Time.timeSinceLevelLoad;
-
-        if (ObjectSpawner.isActive && !PlayerManager.SharedInstance.IsDead)
-        {
-            getDifficulty(timePlaying);
-
-            spawnTime = Random.Range(0.0f, difficultySpawnTime);
-            spawnTimer += Time.deltaTime;
-            if (spawnTimer > spawnTime)
-            {
-
-                int randomInt = Random.Range(0, difficultyInt);
-                int chosenIndex = (randomInt != bombChosenInt) ? goodItemIndex : bombIndex;
-
-                GameObject newObject = ObjectPooler.SharedInstance.GetPooledObject(objectsToSpawnTags[chosenIndex]);
-                if (newObject != null)
-                {
-                    spawnPos = defaultPos;
-                    spawnPos.x += randomXSpawn();
-                    newObject.transform.position = spawnPos;
-                    newObject.transform.rotation = transform.rotation;
-                    newObject.transform.parent = transform;
-                    newObject.SetActive(true);
-                    if (newObject.tag == "Bomb")
-                    {
-                        newObject.GetComponent<BombCollision>().DamageToScore = Random.Range(1, 11);
-                        spawnExtraBomb();
-                    }
-                }
-                spawnTimer = 0.0f;
-            }
-        }
-    }
 
     public static void Deactivate()
     {
@@ -76,17 +37,104 @@ public class ObjectSpawner : MonoBehaviour
             ObjectSpawner.isActive = true;
     }
 
+    void Start()
+    {
+        ObjectSpawner.isActive = true;
+        defaultPos = transform.position;
+    }
+
+    private void Update()
+    {
+        timePlaying = Time.timeSinceLevelLoad;
+
+        if (ObjectSpawner.isActive && !PlayerManager.SharedInstance.IsDead)
+        {
+            if (megaBombDrop && megaBombDropCount > 0)
+                spawnMegaBombDrop();
+            else if (megaBombDrop && megaBombDropCount <= 0)
+            {
+                megaBombDrop = false;
+            }
+            if (!megaBombDrop)
+            {
+                getDifficulty(timePlaying);
+                spawnItemsNormal();
+            }
+        }
+    }
+
+    private void spawnMegaBombDrop()
+    {
+        print("megaBomb - 69");
+        spawnTime = Random.Range(0.1f, 1f);
+        spawnTimer += Time.deltaTime;
+        if (spawnTimer > spawnTime)
+        {
+            GameObject bomb = ObjectPooler.SharedInstance.GetPooledObject(objectsToSpawnTags[bombIndex]);
+            if (bomb != null)
+            {
+                spawnPos = defaultPos;
+                spawnPos.x += randomXSpawn();
+                bomb.transform.position = spawnPos;
+                bomb.transform.rotation = transform.rotation;
+                bomb.transform.parent = transform;
+                bomb.SetActive(true);
+                megaBombDropCount -= 1;
+            }
+            spawnTimer = 0.0f;
+        }
+    }
+
+    private void checkForMegaBombDrop()
+    {
+        if (Random.Range(0, 50) == 5)
+        {
+            megaBombDrop = true;
+            megaBombDropCount = 10;
+        }
+    }
+
+    private void spawnItemsNormal()
+    {
+        spawnTime = Random.Range(0.0f, difficultySpawnTime);
+        spawnTimer += Time.deltaTime;
+        if (spawnTimer > spawnTime)
+        {
+            checkForMegaBombDrop();
+
+            int randomInt = Random.Range(0, difficultyInt);
+            int chosenIndex = (randomInt != bombChosenInt) ? goodItemIndex : bombIndex;
+
+            GameObject newObject = ObjectPooler.SharedInstance.GetPooledObject(objectsToSpawnTags[chosenIndex]);
+            if (newObject != null)
+            {
+                spawnPos = defaultPos;
+                spawnPos.x += randomXSpawn();
+                newObject.transform.position = spawnPos;
+                newObject.transform.rotation = transform.rotation;
+                newObject.transform.parent = transform;
+                newObject.SetActive(true);
+                if (newObject.tag == "Bomb")
+                {
+                    newObject.GetComponent<BombCollision>().DamageToScore = Random.Range(1, 11);
+                    spawnExtraBomb();
+                }
+            }
+            spawnTimer = 0.0f;
+        }
+    }
+
     private void getDifficulty(float timePlaying)
     {
         if (timePlaying > 45f)
         {
             difficultyInt = 6;
-            difficultySpawnTime = 10f;
+            difficultySpawnTime = 3f;
         }            
         else if (timePlaying > 35f)
         {
             difficultyInt = 7;
-            difficultySpawnTime = 13f;
+            difficultySpawnTime = 10f;
         }
         else if (timePlaying > 25f)
         {
@@ -135,12 +183,13 @@ public class ObjectSpawner : MonoBehaviour
             {
                 spawnPos = defaultPos;
                 extraBomb.GetComponent<BombCollision>().DamageToScore = 10;
+                spawnPos.y += Random.Range(0, 5f);
                 spawnPos.x += randomXSpawn();
                 extraBomb.transform.parent = transform;
                 extraBomb.transform.position = spawnPos;
                 extraBomb.transform.rotation = transform.rotation;
                 extraBomb.SetActive(true);
-                print("Extra Bomb - ObjectSpawner - 139");
+                print("spawn bomb - 150");
             }
         }
     }
