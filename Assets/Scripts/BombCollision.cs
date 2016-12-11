@@ -57,7 +57,6 @@ public class BombCollision : MonoBehaviour
     private void addExplosionForce2D(Rigidbody2D rb, float force, Vector3 expPos, float radius)
     {
         Vector3 direction = (rb.transform.position - expPos);
-        print(direction);
         float calc = 1 - (direction.magnitude / radius);
         if (calc <= 0)
             calc = 0;
