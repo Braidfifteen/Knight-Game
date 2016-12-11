@@ -4,8 +4,10 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
     public Text scoreText;
+    public Animator anim;
     public static int score;
     public static bool scoreUpdated = false;
+    private int prevScore;
 
     private void Start()
     {
@@ -36,6 +38,16 @@ public class ScoreManager : MonoBehaviour
 
     private void setScore()
     {
-        scoreText.text = "Score : " + score.ToString();
+        scoreText.text = score.ToString();
+        if (score > prevScore)
+        {
+            anim.SetTrigger("ScoreUpTrig");
+        }
+
+        else if (score < prevScore)
+        {
+            anim.SetTrigger("ScoreDownTrig");
+        }
+        prevScore = score;
     }
 }
