@@ -65,7 +65,6 @@ public class ObjectSpawner : MonoBehaviour
 
     private void spawnMegaBombDrop()
     {
-        print("megaBomb - 69");
         spawnTime = Random.Range(0.1f, 1f);
         spawnTimer += Time.deltaTime;
         if (spawnTimer > spawnTime)
@@ -189,7 +188,6 @@ public class ObjectSpawner : MonoBehaviour
                 extraBomb.transform.position = spawnPos;
                 extraBomb.transform.rotation = transform.rotation;
                 extraBomb.SetActive(true);
-                print("spawn bomb - 150");
             }
         }
     }
