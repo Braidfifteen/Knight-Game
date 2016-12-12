@@ -49,8 +49,8 @@ public class SceneLoader : MonoBehaviour
     IEnumerator LoadNewScene()
     {
         // This Line can be deleted. Used for testing purposes only
-        if (useLoadingText)
-            yield return new WaitForSeconds(3);
+        //if (useLoadingText)
+        //    yield return new WaitForSeconds(3);
 
         if (nextSceneIndex == activeScene.buildIndex)
             SceneManager.LoadScene(nextSceneIndex, LoadSceneMode.Single);

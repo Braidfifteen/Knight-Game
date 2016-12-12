@@ -25,7 +25,7 @@ public class ExplosionForce2D : MonoBehaviour
 			Vector3 fingerPos = Input.GetTouch(0).position;
 			fingerPos.z = 10;
 			Vector3 objPos = Camera.main.ScreenToWorldPoint(fingerPos);
-			AddExplosionForce(rigidbody2D, Power * 100, objPos, Radius);
+			AddExplosionForce(GetComponent<Rigidbody2D>(), Power * 100, objPos, Radius);
 		}
 
 # endif
