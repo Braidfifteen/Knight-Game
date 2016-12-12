@@ -26,13 +26,13 @@ public class ItemCollisions : MonoBehaviour
         else if (col.tag == "Bag")
         {
             ScoreManager.AddToScore(1);
-            GameObject sound = ObjectPooler.SharedInstance.GetPooledObject("ItemCatchedSound");
-            if (sound != null)
-            {
-                sound.transform.position = transform.position;
-                sound.transform.rotation = transform.rotation;
-                sound.SetActive(true);
-            }
+            //GameObject sound = ObjectPooler.SharedInstance.GetPooledObject("ItemCatchedSound");
+            //if (sound != null)
+            //{
+            //    sound.transform.position = transform.position;
+            //    sound.transform.rotation = transform.rotation;
+            //    sound.SetActive(true);
+            //}
             gameObject.SetActive(false);
         }
         else if (col.tag == "Ground")
