@@ -24,6 +24,7 @@ public class ObjectSpawner : MonoBehaviour
     public float spawnTimer = 0.0f;
     public float timePlaying;
     public string[] objectsToSpawnTags;
+    public float spawnRange = 12f;
 
     public static void Deactivate()
     {
@@ -194,6 +195,6 @@ public class ObjectSpawner : MonoBehaviour
 
     private float randomXSpawn()
     {
-        return Random.Range(1.0f, 16f);
+        return Random.Range(1.0f, spawnRange);
     }
 }
