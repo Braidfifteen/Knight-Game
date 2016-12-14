@@ -13,6 +13,7 @@ public class EnableButtonsOnDeath : MonoBehaviour
 
     void Update()
     {
+
         if (EnableButtonsOnDeath.isEnabled)
         {
             foreach (GameObject button in buttons)

@@ -5,7 +5,6 @@ public class ScoreManager : MonoBehaviour
 {
     public Text scoreText;
     public GameObject player;
-    public GameObject parent;
     public Animator anim;
     public static int score;
     public static bool scoreUpdated = false;

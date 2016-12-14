@@ -22,6 +22,7 @@ public class ItemCollisions : MonoBehaviour
                 sound.SetActive(true);
             }
             gameObject.SetActive(false);
+            ScoreManager.DecreaseScore(1);
         }
         else if (col.tag == "Bag")
         {

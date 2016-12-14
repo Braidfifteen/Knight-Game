@@ -31,6 +31,7 @@ public class BombCollision : MonoBehaviour
         if (other.tag == "Player")
         {
             playerHealth.RecieveDamage(damageToPlayer);
+            ScoreManager.DecreaseScore(3);
         }
         if (other.tag == "Bag")
         {
