@@ -9,23 +9,26 @@ public class ScoreManager : MonoBehaviour
     public Animator anim;
     public static int score;
     public static bool scoreUpdated = false;
+    private static int bonusCount;
+    private static int prevBonusCount;
     private int prevScore;
 
     private void Start()
     {
+        ScoreManager.bonusCount = 0;
+        ScoreManager.prevBonusCount = 0;
         score = 0;
         setScore();
     }
 
     private void Update()
     {
-        int randNum = Random.Range(1, 11);
         if (scoreUpdated && score > prevScore)
         {
-            //This must be changed
-            if (randNum == 5)
+            if (bonusCount >= prevBonusCount + 5 && score > 0)
             {
-                score += 5;
+                score += bonusCount;
+                prevBonusCount = bonusCount;
                 setScore();
                 scoreUpdated = false;
                 GameObject multiplier = CanvasObjectPooler.SharedInstance.GetPooledObject("Multiplier");
@@ -42,8 +45,8 @@ public class ScoreManager : MonoBehaviour
                         multiplier.transform.position = new Vector3(player.transform.position.x + .2f, player.transform.position.y + 1.5f, 0);
 
                     multiplier.transform.rotation = transform.rotation;
-
                     multiplier.transform.parent = transform;
+                    multiplier.GetComponent<UpdateUIText>().UpdateText("x", bonusCount);
                     multiplier.SetActive(true);
                 }
                 GameObject multiplierSound = ObjectPooler.SharedInstance.GetPooledObject("Multiplier");
@@ -78,12 +81,15 @@ public class ScoreManager : MonoBehaviour
 
     public static void AddToScore(int amount)
     {
+        ScoreManager.bonusCount += 1;
         ScoreManager.score += amount;
         ScoreManager.scoreUpdated = true;
     }
 
     public static void DecreaseScore(int amount)
     {
+        ScoreManager.bonusCount = 0;
+        ScoreManager.prevBonusCount = 0;
         ScoreManager.score -= amount;
         ScoreManager.scoreUpdated = true;
     }

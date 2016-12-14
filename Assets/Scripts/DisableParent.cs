@@ -1,15 +1,11 @@
 ﻿using UnityEngine;
 
-public class TESTDISABLEANIMATION : MonoBehaviour
+public class DisableParent : MonoBehaviour
 {
     public GameObject parent;
+
     public void Disable()
     {
         parent.SetActive(false);
     }
-
-    //public void parentDisable()
-    //{
-
-    //}
 }
